@@ -1,0 +1,3 @@
+#greetings-modal .modal-body {
+  overflow-y: auto !important;
+}
