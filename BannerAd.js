@@ -1,6 +1,6 @@
 (function() {
-  const fixedContainer = document.querySelector('.fixed-container');
-  if (fixedContainer) {
+  const pageContainer = document.querySelector('.page-container');
+  if (pageContainer) {
     const newBanner = document.createElement('div');
     newBanner.id = 'custom-domain-banner';
     newBanner.style.cssText = [
@@ -18,14 +18,8 @@
       'z-index:9999'
     ].join(';');
 
-    newBanner.textContent = 'You are viewing the'; // your text here
+    newBanner.textContent = 'You are viewing the';
 
-    fixedContainer.appendChild(newBanner);
-
-    const pageContainer = document.querySelector('.page-container');
-    if (pageContainer) {
-      const currentMargin = parseInt(getComputedStyle(pageContainer).marginTop) || 0;
-      pageContainer.style.marginTop = (currentMargin + newBanner.offsetHeight) + 'px';
-    }
+    pageContainer.insertBefore(newBanner, pageContainer.firstChild);
   }
 })();
