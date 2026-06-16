@@ -20,11 +20,14 @@
       'box-sizing:border-box'
     ].join(';');
 
-    const text = document.createElement('span');
-    text.style.cssText = 'color:#31708f; font-size:14px; font-weight:bold;';
-    text.textContent = 'Download Clarity Go';
+    const link = document.createElement('a');
+    link.href = 'YOUR_URL_HERE';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.style.cssText = 'color:#31708f; font-size:14px; font-weight:bold; text-decoration:underline;';
+    link.textContent = 'Download Clarity Go';
 
-    newBanner.appendChild(text);
+    newBanner.appendChild(link);
     pageContainer.insertBefore(newBanner, pageContainer.firstChild);
   }
 })();
