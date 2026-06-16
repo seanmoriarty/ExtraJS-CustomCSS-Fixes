@@ -17,14 +17,16 @@
       'align-items:center',
       'justify-content:center',
       'width:100%',
-      'box-sizing:border-box'
+      'box-sizing:border-box',
+      'background-color:#F26522',
+      'border-color:#d4581a'
     ].join(';');
 
     const link = document.createElement('a');
     link.href = 'YOUR_URL_HERE';
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    link.style.cssText = 'color:#31708f; font-size:14px; font-weight:bold; text-decoration:underline;';
+    link.style.cssText = 'color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;';
     link.textContent = 'Download Clarity Go';
 
     newBanner.appendChild(link);
