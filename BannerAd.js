@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (target && target.id === 'domain-message') {
       const inner = document.createElement('div');
       const h5 = document.createElement('h5');
-      h5.textContent = 'You are viewing the';
+      h5.textContent = 'Download Clarity Go';
       inner.appendChild(h5);
       target.appendChild(inner);
     }
