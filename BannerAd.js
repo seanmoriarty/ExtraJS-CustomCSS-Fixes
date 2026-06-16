@@ -22,7 +22,7 @@
 
     const text = document.createElement('span');
     text.style.cssText = 'color:#31708f; font-size:14px; font-weight:bold;';
-    text.textContent = 'You are viewing the';
+    text.textContent = 'Download Clarity Go';
 
     newBanner.appendChild(text);
     pageContainer.insertBefore(newBanner, pageContainer.firstChild);
