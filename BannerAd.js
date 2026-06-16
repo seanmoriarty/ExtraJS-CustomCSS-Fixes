@@ -3,21 +3,25 @@
   if (fixedContainer) {
     const newBanner = document.createElement('div');
     newBanner.id = 'custom-domain-banner';
-    newBanner.className = 'alert alert-info';
+    newBanner.style.cssText = [
+      'display:block',
+      'width:100%',
+      'background-color:#d9edf7',
+      'border-bottom:1px solid #bce8f1',
+      'color:#31708f',
+      'text-align:center',
+      'padding:10px 0',
+      'font-size:14px',
+      'font-weight:bold',
+      'box-sizing:border-box',
+      'position:relative',
+      'z-index:9999'
+    ].join(';');
 
-    const container = document.createElement('div');
-    container.className = 'domain-message-container';
+    newBanner.textContent = 'You are viewing the'; // your text here
 
-    const text = document.createElement('div');
-    text.className = 'domain-message-text';
-    text.style.cssText = 'text-align:center; color:#31708f; font-size:14px; font-weight:bold;';
-    text.textContent = 'You are viewing the'; // your text here
-
-    container.appendChild(text);
-    newBanner.appendChild(container);
     fixedContainer.appendChild(newBanner);
 
-    // Adjust page margin
     const pageContainer = document.querySelector('.page-container');
     if (pageContainer) {
       const currentMargin = parseInt(getComputedStyle(pageContainer).marginTop) || 0;
