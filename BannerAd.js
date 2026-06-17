@@ -1,5 +1,4 @@
-Looking at the screenshot, the banner isn't full width and isn't fixed. Two fixes — match the .fixed-container positioning and add position:fixed:
-javascript(function() {
+(function() {
   const fixedContainer = document.querySelector('.fixed-container');
   const pageContainer = document.querySelector('.page-container');
   
