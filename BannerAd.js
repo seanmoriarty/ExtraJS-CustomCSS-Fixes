@@ -1,8 +1,6 @@
 (function() {
-  const fixedContainer = document.querySelector('.fixed-container');
   const pageContainer = document.querySelector('.page-container');
-  
-  if (fixedContainer && pageContainer) {
+  if (pageContainer) {
     const newBanner = document.createElement('div');
     newBanner.className = 'alert alert-info';
     newBanner.id = 'custom-domain-banner';
@@ -28,17 +26,21 @@
       'z-index:9999'
     ].join(';');
 
+    const text = document.createElement('span');
+    text.style.cssText = 'color:#fff; font-size:14px; font-weight:bold;';
+    text.textContent = 'Your current mobile app retires July 23rd. Clarity Go is ready. ';
+
     const link = document.createElement('a');
-    link.href = 'YOUR_URL_HERE';
+    link.href = 'https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app';
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.style.cssText = 'color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;';
-    link.textContent = 'Download Clarity Go';
+    link.textContent = 'Download Now.';
 
+    newBanner.appendChild(text);
     newBanner.appendChild(link);
-    fixedContainer.appendChild(newBanner);
+    pageContainer.insertBefore(newBanner, pageContainer.firstChild);
 
-    // Push page content down to account for both fixed banners
     const currentMargin = parseInt(getComputedStyle(pageContainer).marginTop) || 0;
     pageContainer.style.marginTop = (currentMargin + 40) + 'px';
   }
