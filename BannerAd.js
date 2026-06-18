@@ -26,19 +26,8 @@
       'z-index:9999'
     ].join(';');
 
-    const text = document.createElement('span');
-    text.style.cssText = 'color:#fff; font-size:14px; font-weight:bold;';
-    text.textContent = 'Your current mobile app retires July 23rd. Clarity Go is ready.';
+    newBanner.innerHTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Your current mobile app retires July 23rd. Clarity Go is ready. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
 
-    const link = document.createElement('a');
-    link.href = 'https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app';
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.style.cssText = 'color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;';
-    link.textContent = 'Download Now.';
-
-    newBanner.appendChild(text);
-    newBanner.appendChild(link);
     pageContainer.insertBefore(newBanner, pageContainer.firstChild);
 
     const currentMargin = parseInt(getComputedStyle(pageContainer).marginTop) || 0;
