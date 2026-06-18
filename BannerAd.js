@@ -26,24 +26,25 @@
       'z-index:9999'
     ].join(';');
 
-const text = document.createElement('span');
-text.style.cssText = 'color:#fff; font-size:14px; font-weight:bold;';
-text.textContent = 'Your current mobile app retires July 23rd. Clarity Go is ready.';
+    const text = document.createElement('span');
+    text.style.cssText = 'color:#fff; font-size:14px; font-weight:bold;';
+    text.textContent = 'Your current mobile app retires July 23rd. Clarity Go is ready.';
 
-const space = document.createTextNode(' ');
+    const space = document.createTextNode(' ');
 
-const link = document.createElement('a');
-link.href = 'https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app';
-link.target = '_blank';
-link.rel = 'noopener noreferrer';
-link.style.cssText = 'color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;';
-link.textContent = 'Download Now.';
+    const link = document.createElement('a');
+    link.href = 'https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.style.cssText = 'color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;';
+    link.textContent = 'Download Now.';
 
-newBanner.appendChild(text);
-newBanner.appendChild(space);
-newBanner.appendChild(link);
+    newBanner.appendChild(text);
+    newBanner.appendChild(space);
+    newBanner.appendChild(link);
+    pageContainer.insertBefore(newBanner, pageContainer.firstChild);
 
-const currentMargin = parseInt(getComputedStyle(pageContainer).marginTop) || 0;
-pageContainer.style.marginTop = (currentMargin + 40) + 'px';
+    const currentMargin = parseInt(getComputedStyle(pageContainer).marginTop) || 0;
+    pageContainer.style.marginTop = (currentMargin + 40) + 'px';
   }
 })();
