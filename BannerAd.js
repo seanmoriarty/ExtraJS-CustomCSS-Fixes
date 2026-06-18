@@ -30,8 +30,6 @@
     text.style.cssText = 'color:#fff; font-size:14px; font-weight:bold;';
     text.textContent = 'Your current mobile app retires July 23rd. Clarity Go is ready.';
 
-    const space = document.createTextNode(' ');
-
     const link = document.createElement('a');
     link.href = 'https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app';
     link.target = '_blank';
@@ -40,7 +38,6 @@
     link.textContent = 'Download Now.';
 
     newBanner.appendChild(text);
-    newBanner.appendChild(space);
     newBanner.appendChild(link);
     pageContainer.insertBefore(newBanner, pageContainer.firstChild);
 
