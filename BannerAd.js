@@ -26,7 +26,7 @@
       'z-index:9999'
     ].join(';');
 
-    newBanner.innerHTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Your current mobile app retires July 23rd. Clarity Go is ready. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
+    newBanner.innerHTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Still using Clarity Office Anywhere? It retires July 23rd. Download Clarity Go today. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
 
     pageContainer.insertBefore(newBanner, pageContainer.firstChild);
 
