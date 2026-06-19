@@ -4,10 +4,16 @@
     const newBanner = document.createElement('div');
     newBanner.className = 'alert alert-info';
     newBanner.id = 'custom-domain-banner';
+
+    // Check if the NS domain banner is visible
+    const nsBanner = document.querySelector('.fixed-container #domain-message');
+    const nsBannerVisible = nsBanner && nsBanner.offsetHeight > 0;
+    const topOffset = nsBannerVisible ? 40 : 0;
+
     newBanner.style.cssText = [
       'height:40px',
       'position:fixed',
-      'top:40px',
+      'top:' + topOffset + 'px',
       'left:0',
       'right:0',
       'visibility:visible',
