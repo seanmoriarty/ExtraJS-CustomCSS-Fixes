@@ -1,20 +1,47 @@
 (function() {
 
-  // Bump the version suffix if you ever want a new/changed banner to reappear
-  // for users who dismissed the old one.
-  const DISMISS_KEY = 'clarityGoBannerDismissed_v1';
+  // ---- Banner content -------------------------------------------------------
+  // Edit this to change the message. Any change to this string (text, link,
+  // styling) automatically re-shows the banner to users who dismissed the old one.
+  const MESSAGE_HTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Clarity Office Anywhere is being replaced by Clarity Go. Switch today for the best mobile experience. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
 
-  // Already on the page, or previously dismissed -> do nothing.
+  // ---- Dismissal tracking ---------------------------------------------------
+  // Stores a fingerprint of the message the user dismissed (not just "true").
+  // On load we compare it to the current message's fingerprint; if they differ,
+  // the message has changed and the banner shows again.
+  const DISMISS_KEY = 'clarityBannerDismissedHash';
+  const LEGACY_KEYS = ['clarityGoBannerDismissed_v1']; // from the earlier version
+
+  // Small, fast string hash (djb2). Not cryptographic - only used to detect change.
+  function hashString(str) {
+    let hash = 5381;
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) + hash + str.charCodeAt(i)) | 0;
+    }
+    return (hash >>> 0).toString(36);
+  }
+
+  const messageHash = hashString(MESSAGE_HTML);
+
+  function storageGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function storageSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) { /* storage blocked */ }
+  }
+  function storageRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) { /* storage blocked */ }
+  }
+
+  // Clean up the old boolean flag so it doesn't linger.
+  LEGACY_KEYS.forEach(storageRemove);
+
+  // Already on the page, or this exact message was dismissed -> do nothing.
   if (document.getElementById('custom-domain-banner')) {
     return;
   }
-
-  try {
-    if (localStorage.getItem(DISMISS_KEY) === 'true') {
-      return;
-    }
-  } catch (e) {
-    // localStorage unavailable (privacy mode, blocked storage) - show the banner anyway.
+  if (storageGet(DISMISS_KEY) === messageHash) {
+    return;
   }
 
   const pageContainer = document.querySelector('.page-container');
@@ -22,6 +49,7 @@
     return;
   }
 
+  // ---- Build banner ---------------------------------------------------------
   const BANNER_HEIGHT = 40;
 
   const newBanner = document.createElement('div');
@@ -59,7 +87,7 @@
     'z-index:1'
   ].join(';');
 
-  newBanner.innerHTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Clarity Office Anywhere is being replaced by Clarity Go. Switch today for the best mobile experience. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
+  newBanner.innerHTML = MESSAGE_HTML;
 
   // Close button, pinned to the far right of the banner.
   // The banner is position:fixed, so absolute positioning is relative to it.
@@ -105,11 +133,9 @@
       return;
     }
 
-    try {
-      localStorage.setItem(DISMISS_KEY, 'true');
-    } catch (e) {
-      // Storage blocked - banner still closes for this page view.
-    }
+    // Remember which message was dismissed. A new message produces a new hash,
+    // so this stops matching and the banner shows again.
+    storageSet(DISMISS_KEY, messageHash);
     newBanner.remove();
     pageContainer.style.marginTop = originalInlineMargin;
   });
