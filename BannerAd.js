@@ -1,13 +1,19 @@
 (function() {
+
+  if (document.getElementById('custom-domain-banner')) {
+    return;
+  }
+
   const pageContainer = document.querySelector('.page-container');
   if (pageContainer) {
     const newBanner = document.createElement('div');
     newBanner.className = 'alert alert-info';
     newBanner.id = 'custom-domain-banner';
 
-    // Check if the NS domain banner is visible
+    // Check if the NS domain banner is visible (either domain-message or mask-bar)
     const nsBanner = document.querySelector('.fixed-container #domain-message');
-    const nsBannerVisible = nsBanner && nsBanner.offsetHeight > 0;
+    const maskBar = document.querySelector('.fixed-container .mask-bar');
+    const nsBannerVisible = (nsBanner && nsBanner.offsetHeight > 0) || (maskBar && maskBar.offsetHeight > 0);
     const topOffset = nsBannerVisible ? 40 : 0;
 
     newBanner.style.cssText = [
@@ -32,7 +38,7 @@
       'z-index:9999'
     ].join(';');
 
-    newBanner.innerHTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Still using Clarity Office Anywhere? It retires July 23rd. Download Clarity Go today. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
+    newBanner.innerHTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Clarity Office Anywhere is being replaced by Clarity Go. Switch today for the best mobile experience. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
 
     pageContainer.insertBefore(newBanner, pageContainer.firstChild);
 
