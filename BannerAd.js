@@ -53,7 +53,10 @@
     'box-sizing:border-box',
     'background-color:#e57027',
     'border-color:#c45e1e',
-    'z-index:9999'
+    // Lowest positive layer: stays above normal page content as it scrolls,
+    // but below anything the portal positions with a z-index (save messages,
+    // modals, dropdowns, tooltips).
+    'z-index:1'
   ].join(';');
 
   newBanner.innerHTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Clarity Office Anywhere is being replaced by Clarity Go. Switch today for the best mobile experience. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
