@@ -92,7 +92,16 @@
   const currentMargin = parseInt(getComputedStyle(pageContainer).marginTop, 10) || 0;
   pageContainer.style.marginTop = (currentMargin + BANNER_HEIGHT) + 'px';
 
-  closeBtn.addEventListener('click', function() {
+  closeBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Ignore programmatic clicks (e.g. portal scripts calling .click()/trigger('click')).
+    // Only a real user click should persist the dismissal.
+    if (!e.isTrusted) {
+      return;
+    }
+
     try {
       localStorage.setItem(DISMISS_KEY, 'true');
     } catch (e) {
