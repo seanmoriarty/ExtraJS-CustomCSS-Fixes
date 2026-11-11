@@ -3,11 +3,11 @@
   // ---- Banner content -------------------------------------------------------
   // Edit this to change the message. Any change to this string (text, link,
   // styling) automatically re-shows the banner to users who dismissed the old one.
-  const MESSAGE_HTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Clarity Office Anywhere is being replaced by Clarity Go. Switch today for the best mobile experience. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now!</a></span>';
+  const MESSAGE_HTML = '<span style="color:#fff; font-size:14px; font-weight:bold;">Clarity Office Anywhere is being replaced by Clarity Go. Switch today for the best mobile experience. <a href="https://support.clarityvoice.com/portal/en/kb/articles/clarity-go-mobile-app" target="_blank" rel="noopener noreferrer" style="color:#fff; font-size:14px; font-weight:bold; text-decoration:underline;">Download Now.</a></span>';
 
   // ---- Dismissal tracking ---------------------------------------------------
   // Stores a fingerprint of the message the user dismissed (not just "true").
-  // On load we compare it to the current message's fingerprint; if they differ,
+  // On load we compare it to the current message's fingerprint; if they differ,.
   // the message has changed and the banner shows again.
   const DISMISS_KEY = 'clarityBannerDismissedHash';
   const LEGACY_KEYS = ['clarityGoBannerDismissed_v1']; // from the earlier version
